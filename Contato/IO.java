@@ -11,11 +11,9 @@ class Contato {
 		this.nome = nome;
 		this.telefones = new ArrayList<Telefone>();
 	}
-	
 	public String toString() {
 		return "" + this.nome + "" + this.telefones;
 	}
-	
 	public boolean addFone(Telefone telefone) {
 		for(Telefone tel : this.telefones)
 			if(tel.foneid.equals(telefone.foneid)) {
@@ -24,7 +22,6 @@ class Contato {
 		this.telefones.add(new Telefone(telefone.foneid,telefone.numero));
 		return true;
 	}
-	
 	public boolean rmFone(String foneid) {
 		for(int i = 0; i < this.telefones.size(); i++)
 			if(this.telefones.get(i).foneid.equals(foneid)) {
@@ -79,24 +76,19 @@ class Controller {
 }
 
 public class IO {
-//cria um objeto scan para ler strings do teclado
 	static Scanner scan = new Scanner(System.in);
 
-//aplica um tab e retorna o texto tabulado com dois espaços
 	 static String tab(String text){
 		return "  " + String.join("\n  ", text.split("\n"));
 	 }
-
 	public static void main(String[] args) {
 		Controller cont = new Controller();
 		System.out.println("Digite um comando ou help:");
 		while(true){
 			String line = scan.nextLine();
 			try {
-            //se não der problema, faz a pergunta e mostra a resposta
 				System.out.println(tab(cont.oracle(line)));
 			}catch(Exception e) {
-            //se der problema, mostre o erro que deu
 				System.out.println(tab(e.getMessage()));
 			}
 		}
