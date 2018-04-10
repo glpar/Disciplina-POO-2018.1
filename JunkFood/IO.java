@@ -6,16 +6,16 @@ import java.util.Scanner;
 class Espiral{
 	String nome;
 	int qtd;
-	float preÁo;
+	float pre√ßo;
 	
-	public Espiral(String nome, int qtd, float preÁo) {
+	public Espiral(String nome, int qtd, float pre√ßo) {
 		this.nome = nome;
 		this.qtd = qtd;
-		this.preÁo = preÁo;
+		this.pre√ßo = pre√ßo;
 	}
 	
 	public String toString() {
-		return "[" + this.nome + " : " + this.qtd + " U " + ":" + this.preÁo + " RS" + "]";
+		return "[" + this.nome + " : " + this.qtd + " U " + ":" + this.pre√ßo + " RS" + "]";
 	}
 }
 
@@ -32,23 +32,23 @@ class Maquina{
 			this.espirais.add(new Espiral("-", 0, 0));
 	}
 	
-	public boolean alterarEspiral(int indice, String nome, int qtd,float preÁo) {	
+	public boolean alterarEspiral(int indice, String nome, int qtd,float pre√ßo) {	
 		if(indice > (espirais.size() - 1)) {
-			throw new RuntimeException("Indice n„o existe");	
+			throw new RuntimeException("Indice n√£o existe");	
 		}
 		this.espirais.get(indice).nome = nome;
 		this.espirais.get(indice).qtd = qtd;
-		this.espirais.get(indice).preÁo = preÁo;
+		this.espirais.get(indice).pre√ßo = pre√ßo;
 		return true;
 	}
 	
 	public boolean remover(int indice) {
 		if(indice > (espirais.size() - 1)) {
-			throw new RuntimeException("Indice n„o existe");
+			throw new RuntimeException("Indice n√£o existe");
 		}
 		this.espirais.get(indice).nome = "-";
 		this.espirais.get(indice).qtd = 0;
-		this.espirais.get(indice).preÁo = 0;
+		this.espirais.get(indice).pre√ßo = 0;
 		return true;
 	}
 	public boolean inserirDinheiro(float value) {
@@ -71,7 +71,7 @@ class Maquina{
 	}
 	public boolean vender(int indice) {
 		if(indice > (espirais.size() - 1)) {
-			throw new RuntimeException("Indice n„o existe");
+			throw new RuntimeException("Indice n√£o existe");
 		}
 		for(int i = 0; i < espirais.size(); i++) { 
 			Espiral es = espirais.get(i);
@@ -80,18 +80,18 @@ class Maquina{
 			}
 			else if(es == espirais.get(indice)) {
 				if(es.qtd > 0 ) {
-				if(saldo >= es.preÁo) {
+				if(saldo >= es.pre√ßo) {
 					es.qtd = es.qtd - 1;
-					saldo = saldo - es.preÁo;
+					saldo = saldo - es.pre√ßo;
 					System.out.println("Comprou um " + es.nome + ". saldo: " +  saldo);
 					return true;
 				}
-				else if(saldo < es.preÁo) {
+				else if(saldo < es.pre√ßo) {
 					throw new RuntimeException("Saldo insuficiente");
 				}
 				}
 				else 
-					throw new RuntimeException("Produto n„o disponÌvel ou saldo insuficiente");
+					throw new RuntimeException("Produto n√£o dispon√≠vel ou saldo insuficiente");
 			}
 			}
 
@@ -116,7 +116,7 @@ class Controller{
         String ui[] = line.split(" ");
 
         if(ui[0].equals("help"))
-            return "show, init _espirais _maximo, set _indice _nome _qtd __preÁo, remover _indice, dinheiro _valor, saldo _valor, troco";
+            return "show, init _espirais _maximo, set _indice _nome _qtd __pre√ßo, remover _indice, dinheiro _valor, saldo _valor,comprar _indice troco";
         else if(ui[0].equals("init"))
             maq = new Maquina(Integer.parseInt(ui[1]), Integer.parseInt(ui[2]));
         else if(ui[0].equals("show"))
@@ -130,7 +130,7 @@ class Controller{
         else if(ui[0].equals("saldo"))
         	return "" + maq.getSaldo();
         else if(ui[0].equals("troco"))
-        	return "VocÍ recebeu " + maq.pedirTroco();
+        	return "Voc√™ recebeu " + maq.pedirTroco();
         else if(ui[0].equals("comprar")) {
         	maq.vender(Integer.parseInt(ui[1]));
         }
