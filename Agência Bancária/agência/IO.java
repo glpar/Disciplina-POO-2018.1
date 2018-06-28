@@ -240,8 +240,7 @@ class Controller{
 		
 		gerLogin = new GerenciadorDeLogin(clientes);
 	}
-
-    //nossa funcao oraculo que recebe uma pergunta e retorna uma resposta
+	
     public String oracle(String line){
         String ui[] = line.split(" ");
 
