@@ -1,15 +1,15 @@
-package anotações;
+package anotaÃ§Ãµes;
 
 
 import java.util.Scanner;
 import java.util.ArrayList;
 
 
-class Anotação{
+class AnotaÃ§Ã£o{
 	String texto;
 	String titulo;
 	
-	public Anotação(String titulo, String texto) {
+	public AnotaÃ§Ã£o(String titulo, String texto) {
 		super();
 		this.texto = texto;
 		this.titulo = titulo;
@@ -17,27 +17,25 @@ class Anotação{
 	public String toString() {
 		return titulo + " " + texto;
 	}
-	public String getTitulo() {
-		return titulo;
-	}
+	
 }
 
 class User implements Comparable<User>{ 
 	private String password;
 	private String username;
-	public Repositório<Anotação> anotações;
+	public RepositÃ³rio<AnotaÃ§Ã£o> anotaÃ§Ãµes;
 	
-	public Repositório<Anotação> getAnotação() {
-		return anotações;
+	public RepositÃ³rio<AnotaÃ§Ã£o> getAnotaÃ§Ã£o() {
+		return anotaÃ§Ãµes;
 	}
-	public void setAnotação(Repositório<Anotação> anotações) {
-		this.anotações = anotações;
+	public void setAnotaÃ§Ã£o(RepositÃ³rio<AnotaÃ§Ã£o> anotaÃ§Ãµes) {
+		this.anotaÃ§Ãµes = anotaÃ§Ãµes;
 	}
 	
 	public User(String username, String password) {
 		this.password = password;
 		this.username = username;
-		anotações = new Repositório <Anotação>("");
+		anotaÃ§Ãµes = new RepositÃ³rio <AnotaÃ§Ã£o>("");
 		
 	}
 	public void setPassword(String password) {
@@ -58,10 +56,10 @@ class User implements Comparable<User>{
 }
 
 class GerenciadorDeLogin{
-	private Repositório<User> usuarios;
+	private RepositÃ³rio<User> usuarios;
 	private User user;
 	
-	public GerenciadorDeLogin(Repositório<User> usuarios) {
+	public GerenciadorDeLogin(RepositÃ³rio<User> usuarios) {
 		this.usuarios = usuarios;
 		user = null;
 	}
@@ -88,14 +86,14 @@ class GerenciadorDeLogin{
 }
 
 class Controller{
-	Repositório<User> usuarios;
+	RepositÃ³rio<User> usuarios;
 	GerenciadorDeLogin gerLogin;
-	Repositório<Anotação> anotações;
+	RepositÃ³rio<AnotaÃ§Ã£o> anotaÃ§Ãµes;
 	
 	public Controller() {
-		usuarios = new Repositório<User>("usuario");
+		usuarios = new RepositÃ³rio<User>("usuario");
 		gerLogin = new GerenciadorDeLogin(usuarios);
-		anotações = new Repositório<Anotação>("anotação");
+		anotaÃ§Ãµes = new RepositÃ³rio<AnotaÃ§Ã£o>("anotaÃ§Ã£o");
 	}
 
     public String oracle(String line){
@@ -120,10 +118,10 @@ class Controller{
 		    String texto = " ";
 		    for(int i = 2 ; i<ui.length; i++)
 		    	texto += ui[i] + "";
-		    gerLogin.getUser().anotações.add(ui[1], new Anotação(ui[1],texto)); 
+		    gerLogin.getUser().anotaÃ§Ãµes.add(ui[1], new AnotaÃ§Ã£o(ui[1],texto)); 
 		}
         else if(ui[0].equals("rmNotes")) {
-        	gerLogin.getUser().anotações.remove(ui[1]);
+        	gerLogin.getUser().anotaÃ§Ãµes.remove(ui[1]);
 }
         else if(ui[0].equals("showUser")) {
         	String saida = "";
@@ -135,7 +133,7 @@ class Controller{
         else if(ui[0].equals("showNotes")) {
         	String saida = " ";
     		for(User u : usuarios.getAll())
-    				saida += u.getAnotação() + "\n";
+    				saida += u.getAnotaÃ§Ã£o() + "\n";
     			return saida;
         }
         else
