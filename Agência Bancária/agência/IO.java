@@ -1,18 +1,18 @@
-package agência;
+package agÃªncia;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 class Agencia {
-	private Repositório<Cliente> clientes;
+	private RepositÃ³rio<Cliente> clientes;
 	
 	public Agencia(){
-		clientes = new Repositório<Cliente>("clientes");
+		clientes = new RepositÃ³rio<Cliente>("clientes");
 	}
 
 	public boolean addCliente(String cpf){
 		for(Cliente c: clientes.getAll()){
 			if(c.getIdCliente().equals(cpf)){
-				throw new RuntimeException("CPF já cadastrado");
+				throw new RuntimeException("CPF jÃ¡ cadastrado");
 			}
 		}
 		
@@ -31,17 +31,17 @@ class Agencia {
 		return false;
 	}
 	
-	public Repositório<Cliente> getClientes(){
+	public RepositÃ³rio<Cliente> getClientes(){
 		return clientes;
 	}
 }
 class Cliente {
 	private String idCliente;
-	private Repositório<Conta> contas;
+	private RepositÃ³rio<Conta> contas;
 	
 	public Cliente(String idCliente){
 		this.idCliente = idCliente;
-		this.contas    = new Repositório<Conta>("contas");
+		this.contas    = new RepositÃ³rio<Conta>("contas");
 		
 		this.contas.add(new Conta(Conta.ultIdConta));
 		Conta.ultIdConta++;
@@ -83,7 +83,7 @@ class Cliente {
 		return idCliente;
 	}
 
-	public Repositório<Conta> getContas() {
+	public RepositÃ³rio<Conta> getContas() {
 		return contas;
 	}
 	
@@ -94,13 +94,13 @@ class Conta {
 	
 	private float saldo;
 	private int numero;
-	private Repositório<Operacao> extrato;
+	private RepositÃ³rio<Operacao> extrato;
 	private boolean ativa;
 	
 	public Conta(int numero){
 		this.numero  = numero;
 		this.saldo   = 0;
-		this.extrato = new Repositório<Operacao>("extrato");
+		this.extrato = new RepositÃ³rio<Operacao>("extrato");
 		this.ativa   = true;
 	}
 	
@@ -130,7 +130,7 @@ class Conta {
 	
 	public boolean transferir(Conta other, float valor){
 		if(!other.isAtiva()){
-			throw new RuntimeException("A conta destino está inativa");
+			throw new RuntimeException("A conta destino estÃ¡ inativa");
 		}
 		
 		if(this.sacar(valor)){
@@ -153,7 +153,7 @@ class Conta {
 		return numero;
 	}
 
-	public Repositório<Operacao> getExtrato() {
+	public RepositÃ³rio<Operacao> getExtrato() {
 		return extrato;
 	}
 
@@ -191,10 +191,10 @@ class Operacao {
 }
 
 class GerenciadorDeLogin{
-	private Repositório<Cliente> clientes;
+	private RepositÃ³rio<Cliente> clientes;
 	private Cliente cliet;
 	
-	public GerenciadorDeLogin(Repositório<Cliente> clientes) {
+	public GerenciadorDeLogin(RepositÃ³rio<Cliente> clientes) {
 		this.clientes = clientes;
 		cliet = null;
 	}
@@ -218,9 +218,9 @@ class GerenciadorDeLogin{
 	}
 }
 class Controller{
-	Repositório<Cliente> clientes;
-	Repositório<Conta> contas;
-	Repositório<Operacao> extrato;
+	RepositÃ³rio<Cliente> clientes;
+	RepositÃ³rio<Conta> contas;
+	RepositÃ³rio<Operacao> extrato;
 	Agencia agencia;
 	Cliente cliente;
 	Conta conta;
@@ -231,9 +231,9 @@ class Controller{
 	
 	
 	public Controller() {
-		clientes = new Repositório<Cliente>("clientes");
-		contas = new Repositório<Conta>("contas");
-		extrato = new Repositório<Operacao>("extrato");
+		clientes = new RepositÃ³rio<Cliente>("clientes");
+		contas = new RepositÃ³rio<Conta>("contas");
+		extrato = new RepositÃ³rio<Operacao>("extrato");
 		agencia = new Agencia();
 		cliente = new Cliente(idCliente);
 		conta = new Conta(numero);
@@ -283,10 +283,8 @@ class Controller{
 }
 
 public class IO {
-    //cria um objeto scan para ler strings do teclado
     static Scanner scan = new Scanner(System.in);
     
-    //aplica um tab e retorna o texto tabulado com dois espaços
     static private String tab(String text){
         return "  " + String.join("\n  ", text.split("\n"));
     }
@@ -297,10 +295,8 @@ public class IO {
         while(true){
             String line = scan.nextLine();
             try {
-                //se não der problema, faz a pergunta e mostra a resposta
                 System.out.println(tab(cont.oracle(line)));
             }catch(Exception e) {
-                //se der problema, mostre o erro que deu
                 System.out.println(tab(e.getMessage()));
             }
         }
