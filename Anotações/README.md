@@ -1,6 +1,6 @@
 O que você fez:
 
-Um código com o objetivo de criar um serviço de anotações. O código tem 5 classes(Anotação, Controller, GerenciadorDeLogin, IO, User), fora o repositório. A classe Anotação só possui o construtor e o toString. A classe Controller serve para atribuir palavras chaves aos métodos, para que possam ser ativadas se essas palavras chaves forem digitadas pelo usuário. A classe IO serve para o uso das Scanner e do System.out.println do código em si.A classe GerenciadorDeLogin possui 2 métodos um para login e outro para logout, um construtor e um get para retornar usuário. A classe User possui diversos get e set, um construtor, to string e um repositório de anotações.
+Um código com o objetivo de criar um serviço de anotações. O código tem 5 classes(Anotação, Controller, GerenciadorDeLogin, IO, User), fora o repositório. A classe Anotação só possui o construtor e o toString. A classe Controller serve para atribuir palavras chaves aos métodos, para que possam ser ativadas se essas palavras chaves forem digitadas pelo usuário. A classe IO serve para o uso das Scanner e do System.out.println do código em si. A classe GerenciadorDeLogin possui 2 métodos um para login e outro para logout, um construtor e um get para retornar usuário. A classe User possui diversos get e set, um construtor, to string e um repositório de anotações.
 
 Com quem e como você fez:
 
