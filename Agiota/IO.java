@@ -55,7 +55,7 @@ class Sistema{
         		throw new RuntimeException ("Saldo Insuficiente!");
         	}
         }
-        throw new RuntimeException ("Cliente n„o existe!");
+        throw new RuntimeException ("Cliente n√£o existe!");
     }
 
     public String toString(){
@@ -82,7 +82,7 @@ class Sistema{
             }
          return;
         }
-       throw new RuntimeException("Cliente n„o existe");
+       throw new RuntimeException("Cliente n√£o existe");
     }
     
     public void matartrans(String clienteid) {
@@ -119,7 +119,7 @@ class Sistema{
         		throw new RuntimeException("fail: valor maior que divida");
         	}	
         }
-        throw new RuntimeException("Cliente n„o encontrado!");
+        throw new RuntimeException("Cliente n√£o encontrado!");
     }
 }
 
@@ -135,10 +135,7 @@ class Transacao {
         this.id = id;
         this.total = deve + total;
     }
-    public float getdeve() {
-    	return deve;
-    }
-    
+	
     public String toString(){
     	return "id: " + id + " [" + clienteid + " " + deve + "]";
     }      
